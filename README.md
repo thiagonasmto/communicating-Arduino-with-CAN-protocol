@@ -95,7 +95,7 @@ Existem diferentes versões do CAN, incluindo o CAN Clássico e o CAN FD (Taxa d
 
 Caso queira acompanhar os códigos apresentados aqui você precisará de um Arduino e um controlador CAN MCP2515, além de uma interface de programação de sua preferência.
 
-![Quadro Padrão CAN](./assets/CAN-MCP2515.png)
+![Quadro Padrão CAN](./assets/CAN-MCP2515.jpg)
 
 Para o funcionamento adequado da rede é necessário fazer a sincronização dos dispositivos mestre e escravo (lembrando que na rede CAN pode haver mais de um dispositivo enviando dados, como também mais de um recebendo dados), para isso é utilizado os pinos CS e SCK, sendo o primeiro para comunicação direta do mestre com o escravo e o segundo o pino de clock. Os pino SI são para recepção de dados e o SO para saída de dados.
 
