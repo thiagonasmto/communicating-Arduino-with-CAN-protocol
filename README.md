@@ -13,7 +13,6 @@ Bem-vindo ao ao meu repositório pessoal que tem como objeto de estudo o Protoco
 5. [Implementações](#implementações)
 6. [Primeiros Passos](#primeiros-passos)
 7. [Contribuições](#contribuições)
-8. [Licença](#licença)
 
 ## Introdução
 
@@ -58,6 +57,22 @@ As versões 1.0 e 2.0A possuem identificadores de 11 bits, enquanto a versão 2.
 
 ![Quadro Padrão CAN](./assets/quadro-CAN2.0A.png)
 
+**Quadro Padrão CAN 2.0A:**
+
+1. **SOF (Start of Frame) Field (Campo de Início de Quadro):** Composto por um bit dominante que indica o início do quadro.
+
+2. **Arbitration Field (Campo de Arbitragem):** Relacionado ao processo de arbitragem. Contém o identificador e um bit denominado RTR (Remote Transmission Request). Se o RTR for 0, o quadro é do tipo quadro de dados; se for 1, indica que o quadro é do tipo quadro remoto.
+
+3. **Control Field (Campo de Controle):** Contém 6 bits de controle. O primeiro bit é o IDE (Identifier Extended Bit), que sinaliza se o quadro é padrão (dominante) ou estendido (recessivo). O bit seguinte, r0, é reservado para novas aplicações em futuras versões do CAN. Os quatro últimos bits formam o conjunto DLC (Data Length Code), que indica o número de bytes no campo de dados.
+
+4. **Data Field (Campo de Dados):** Contém 8 bytes (64 bits) com o bit mais significativo do primeiro byte de dados sendo transmitido primeiro. Os bytes podem representar diversas informações, uma informação ou partes de uma informação.
+
+5. **CRC (Cyclic Redundance Check) Field (Campo de Verificação de Redundância Cíclica):** Possui 15 bits utilizados para a implementação do código de detecção de erros e um bit recessivo delimitador deste campo. O código é calculado de acordo com um polinômio específico definido para o CAN, utilizando os 4 primeiros campos do quadro de dados (SOF, Arbitration Field, Control Field e Data Field) para o cálculo.
+
+6. **ACK (Acknowledge) Field (Campo de Confirmação):** Consiste em dois bits, um bit denominado ACK, recessivo, que é sobrescrito por bits dominantes transmitidos por outro nó que recebe a mensagem com sucesso.
+
+7. **EOF (End of Frame) Field (Campo de Fim de Quadro):** Possui 7 bits recessivos, indicando o fim do quadro.
+
 ## Implementações
 
 Existem diferentes versões do CAN, incluindo o CAN Clássico e o CAN FD (Taxa de Dados Flexível), cada um com suas especificações. Vários microcontroladores e circuitos integrados de transceptor suportam o CAN, proporcionando flexibilidade para diferentes aplicações.
@@ -69,7 +84,3 @@ Para começar a trabalhar com o CAN, você pode precisar de um controlador CAN, 
 ## Contribuições
 
 Contribuições para esta documentação são bem-vindas. Se você tiver insights, correções ou informações adicionais para compartilhar, por favor, faça um pull request.
-
-## Licença
-
-Esta documentação está licenciada sob a [Licença Internacional Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
