@@ -56,8 +56,6 @@ As mensagens são transmitidas em um formato de quadro que inclui um identificad
 As versões 1.0 e 2.0A possuem identificadores de 11 bits, enquanto a versão 2.0B utiliza identificadores de 29 bits. A última pode ser configurada para operar de forma passiva ou ativa. Na configuração passiva, ela ignora todas as tramas do tipo estendido (29 bits), enquanto na configuração ativa, recebe qualquer mensagem estendida.
 
 ![Quadro Padrão CAN](./assets/quadro-CAN2.0A.png)
-<<<<<<< HEAD
-=======
 
 **Quadro Padrão CAN 2.0A:**
 
@@ -74,7 +72,6 @@ As versões 1.0 e 2.0A possuem identificadores de 11 bits, enquanto a versão 2.
 6. **ACK (Acknowledge) Field (Campo de Confirmação):** Consiste em dois bits, um bit denominado ACK, recessivo, que é sobrescrito por bits dominantes transmitidos por outro nó que recebe a mensagem com sucesso.
 
 7. **EOF (End of Frame) Field (Campo de Fim de Quadro):** Possui 7 bits recessivos, indicando o fim do quadro.
->>>>>>> 04fad7de211aa03a4e95424f1dbd5760042fc91d
 
 8. **IFS:** Contém a quantidade de tempo requerido pelo controlador CAN para mover um frame corretamente recebido para a própria posição dele em uma área de armazenamento de mensagens.
 
@@ -88,7 +85,7 @@ A CiA (CAN in Automation) recomenda a utilização de um conector padronizado de
 
 A rede CAN transmite o sinal dominante aplicando 3,5V no pin CAN+ e 1,25V no pin CAN-, para o sinal recessivo é aplicado 2,5V em ambos os canais.
 
-![Quadro Padrão CAN](./assets/CAN-bus-differential-signal-representations.png)
+<img src="./assets/CAN-bus-differential-signal-representations.png" alt="Quadro Padrão CAN" width="500" height="300">
 
 ## Implementações
 
@@ -102,7 +99,7 @@ Caso queira acompanhar os códigos apresentados aqui você precisará de um Ardu
 
 Para o funcionamento adequado da rede é necessário fazer a sincronização dos dispositivos mestre e escravo (lembrando que na rede CAN pode haver mais de um dispositivo enviando dados, como também mais de um recebendo dados), para isso é utilizado os pinos CS e SCK, sendo o primeiro para comunicação direta do mestre com o escravo e o segundo o pino de clock. Os pino SI são para recepção de dados e o SO para saída de dados.
 
-![Quadro Padrão CAN](./assets/Arduino-uno-pinout.png)
+<img src="./assets/Arduino-uno-pinout.png" alt="Quadro Padrão CAN" width="350" height="400">
 
 Para realizar a comunicação via protocolo CAN no Arduino Uno será utilizado os pinos 13, 12, 11 e 10, que correspondem respectivamente ao SCK, MISO, MOSI e SS.
 
@@ -117,7 +114,7 @@ Para realizar a comunicação via protocolo CAN no Arduino Uno será utilizado o
 
 Para realizar a comunicação via protocolo CAN no Arduino Mega será utilizado os pinos 50, 51, 52 e 53, que correspondem respectivamente ao MISO, MOSI, SCK e SS.
 
-![Quadro Padrão CAN](./assets/arduino-mega-pinout.png)
+<img src="./assets/arduino-mega-pinout.png" alt="Quadro Padrão CAN" width="350" height="400">
 
 | MCP2515  | Arduino Mega |
 |----------|--------------|
