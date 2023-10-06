@@ -61,7 +61,7 @@ As versões 1.0 e 2.0A possuem identificadores de 11 bits, enquanto a versão 2.
 
 1. **SOF (Start of Frame) Field (Campo de Início de Quadro):** Composto por um bit dominante que indica o início do quadro.
 
-2. **Arbitration Field (Campo de Arbitragem):** Relacionado ao processo de arbitragem. Contém o identificador e um bit denominado RTR (Remote Transmission Request). Se o RTR for 0, o quadro é do tipo quadro de dados; se for 1, indica que o quadro é do tipo quadro remoto.
+2. **Arbitration Field (Campo de Arbitragem):** Relacionado ao processo de arbitragem. Contém o identificador e um bit denominado RTR (Remote Transmission Request). Se o RTR for 0, o quadro é do tipo quadro de dados; se for 1, indica que o quadro é do tipo quadro remoto, também está contido o identificador que fornece a informação de prioridade da mensagem.
 
 3. **Control Field (Campo de Controle):** Contém 6 bits de controle. O primeiro bit é o IDE (Identifier Extended Bit), que sinaliza se o quadro é padrão (dominante) ou estendido (recessivo). O bit seguinte, r0, é reservado para novas aplicações em futuras versões do CAN. Os quatro últimos bits formam o conjunto DLC (Data Length Code), que indica o número de bytes no campo de dados.
 
