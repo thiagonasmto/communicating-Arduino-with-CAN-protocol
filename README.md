@@ -58,7 +58,7 @@ As mensagens são transmitidas em um formato de quadro que inclui um identificad
 
 As versões 1.0 e 2.0A possuem identificadores de 11 bits, enquanto a versão 2.0B utiliza identificadores de 29 bits. A última pode ser configurada para operar de forma passiva ou ativa. Na configuração passiva, ela ignora todas as tramas do tipo estendido (29 bits), enquanto na configuração ativa, recebe qualquer mensagem estendida.
 
-![Quadro Padrão CAN](url_da_sua_imagem)
+![Quadro Padrão CAN](./assets/quadro-CAN2.0A.png)
 
 ## Implementações
 
