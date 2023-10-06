@@ -59,9 +59,9 @@ As versões 1.0 e 2.0A possuem identificadores de 11 bits, enquanto a versão 2.
 
 **Quadro Padrão CAN 2.0A:**
 
-1. **SOF (Start of Frame) Field (Campo de Início de Quadro):** Composto por um bit dominante que indica o início do quadro.
+1. **SOF (Start of Frame) Field (Campo de Início de Quadro):** Composto por um bit dominante que indica o início do quadro, é utilizado para sincronizar os nos sob o barramento após ele estar ocioso.
 
-2. **Arbitration Field (Campo de Arbitragem):** Relacionado ao processo de arbitragem. Contém o identificador e um bit denominado RTR (Remote Transmission Request). Se o RTR for 0, o quadro é do tipo quadro de dados; se for 1, indica que o quadro é do tipo quadro remoto, também está contido o identificador que fornece a informação de prioridade da mensagem.
+2. **Arbitration Field (Campo de Arbitragem):** Relacionado ao processo de arbitragem. Contém o identificador e um bit denominado RTR (Remote Transmission Request). Se o RTR for 0, o quadro é do tipo quadro de dados; se for 1, indica que o quadro é do tipo quadro remoto, também está contido o identificador que fornece a informação de prioridade da mensagem - quanto mais proximo de 0 mais prioritária é a mensagem.
 
 3. **Control Field (Campo de Controle):** Contém 6 bits de controle. O primeiro bit é o IDE (Identifier Extended Bit), que sinaliza se o quadro é padrão (dominante) ou estendido (recessivo). O bit seguinte, r0, é reservado para novas aplicações em futuras versões do CAN. Os quatro últimos bits formam o conjunto DLC (Data Length Code), que indica o número de bytes no campo de dados.
 
@@ -73,13 +73,55 @@ As versões 1.0 e 2.0A possuem identificadores de 11 bits, enquanto a versão 2.
 
 7. **EOF (End of Frame) Field (Campo de Fim de Quadro):** Possui 7 bits recessivos, indicando o fim do quadro.
 
+8. **IFS:** Contém a quantidade de tempo requerido pelo controlador CAN para mover um frame corretamente recebido para a própria posição dele em uma área de armazenamento de mensagens.
+
+## Conectores 
+
+A CiA (CAN in Automation) recomenda a utilização de um conector padronizado de nove pinos para a conexão dos nós ao barramento.
+
+![Quadro Padrão CAN](./assets/DB9-para-CAN.png)
+
+## Signal CAN+ CAN-
+
+A rede CAN transmite o sinal dominante aplicando 3,5V no pin CAN+ e 1,25V no pin CAN-, para o sinal recessivo é aplicado 2,5V em ambos os canais.
+
+![Quadro Padrão CAN](./assets/CAN-bus-differential-signal-representations.png)
+
 ## Implementações
 
-Existem diferentes versões do CAN, incluindo o CAN Clássico e o CAN FD (Taxa de Dados Flexível), cada um com suas especificações. Vários microcontroladores e circuitos integrados de transceptor suportam o CAN, proporcionando flexibilidade para diferentes aplicações.
+Existem diferentes versões do CAN, incluindo o CAN Clássico e o CAN FD (Taxa de Dados Flexível), cada um com suas especificações. Vários microcontroladores e circuitos integrados de transceptor suportam o CAN, proporcionando flexibilidade para diferentes aplicações. Para esse repositório será utilizado as placas de prototipagem Arduino para verificar os funcionamentos básicos da comunicação através do CAN.
 
 ## Primeiros Passos
 
-Para começar a trabalhar com o CAN, você pode precisar de um controlador CAN, um transceptor e ferramentas de software apropriadas. Consulte a documentação de seus componentes de hardware e software para detalhes específicos.
+Caso queira acompanhar os códigos apresentados aqui você precisará de um Arduino e um controlador CAN MCP2515, além de uma interface de programação de sua preferência.
+
+![Quadro Padrão CAN](./assets/CAN-MCP2515.png)
+
+Para o funcionamento adequado da rede é necessário fazer a sincronização dos dispositivos mestre e escravo (lembrando que na rede CAN pode haver mais de um dispositivo enviando dados, como também mais de um recebendo dados), para isso é utilizado os pinos CS e SCK, sendo o primeiro para comunicação direta do mestre com o escravo e o segundo o pino de clock. Os pino SI são para recepção de dados e o SO para saída de dados.
+
+![Quadro Padrão CAN](./assets/Arduino-uno-pinout.png)
+
+Para realizar a comunicação via protocolo CAN no Arduino Uno será utilizado os pinos 13, 12, 11 e 10, que correspondem respectivamente ao SCK, MISO, MOSI e SS.
+
+## Conexão entre MCP2515 e Arduino Uno
+
+| MCP2515  | Arduino Uno  |
+|----------|--------------|
+| SCK      | pin 13       |
+| MOSI     | pin 11       |
+| MISO     | pin 12       |
+| CS       | pin 10       |
+
+Para realizar a comunicação via protocolo CAN no Arduino Mega será utilizado os pinos 50, 51, 52 e 53, que correspondem respectivamente ao MISO, MOSI, SCK e SS.
+
+![Quadro Padrão CAN](./assets/arduino-mega-pinout.png)
+
+| MCP2515  | Arduino Mega |
+|----------|--------------|
+| SCK      | pin 52       |
+| MOSI     | pin 51       |
+| MISO     | pin 50       |
+| CS       | pin 53       |
 
 ## Contribuições
 
